@@ -1,4 +1,4 @@
-# atmega-timers
+# atmega-adc
 
 `atmega-adc` is an Arduino/Avr compatible library to control Analogic-To-Digital conversor (ADC). It
 supports up to 16 ADC channels.

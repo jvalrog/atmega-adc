@@ -7,46 +7,48 @@ supports up to 16 ADC channels.
 
 Three functions are currently provided:
 
-`uint16_t adc_read(uint8_t prescaler, uint8_t vref, uint8_t pin)`
+	uint16_t adc_read(uint8_t prescaler, uint8_t vref, uint8_t pin)
 	
-	- This function reads the value on an specific channel only once.
+- This function reads the value on an specific channel only once.
 	
-	- Where `prescaler` is a predefined constant to choose from:
-	
-			ADC_PRESCALER_2
-			ADC_PRESCALER_4
-			ADC_PRESCALER_16
-			ADC_PRESCALER_32
-			ADC_PRESCALER_64
-			ADC_PRESCALER_128
+- Where `prescaler` is a predefined constant to choose from:
 
-	- `vref` is another constant needed to select voltage reference:
-	
-			ADC_VREF_AREF
-			ADC_VREF_AVCC
-			ADC_VREF_MISC1
-			ADC_VREF_MISC2
-	
-	- And `pin` is the channel to read from: 0-7 or 0-16 if available.
-	
-`void adc_start(uint8_t prescaler, uint8_t vref, uint8_t pin_qty, void (*handler)(uint8_t, uint16_t))`
-	
-	- This function uses the ADC interrupt to read values from a number of channels. A user defined
-	function handler is used to process the data.
-	
-	- `prescaler` and `vref` are the same constants as above.
-	
-	- `pin_qty` is the number of pins/channels to read from: 1-8 or 1-16 if available.
-	
-	- `handler` is the user defined function, and it should be defined as:
-	
-			void examle(uint8_t pin, uint16_t value) {
-				// code goes here
-			}
+		ADC_PRESCALER_2
+		ADC_PRESCALER_4
+		ADC_PRESCALER_16
+		ADC_PRESCALER_32
+		ADC_PRESCALER_64
+		ADC_PRESCALER_128
 
-`void adc_stop()`
+- `vref` is another constant needed to select voltage reference:
+	
+		ADC_VREF_AREF
+		ADC_VREF_AVCC
+		ADC_VREF_MISC1
+		ADC_VREF_MISC2
+	
+- And `pin` is the channel to read from: 0-7 or 0-16 if available.
+	
+	
+	void adc_start(uint8_t prescaler, uint8_t vref, uint8_t pin_qty, void (*handler)(uint8_t, uint16_t))
+	
+- This function uses the ADC interrupt to read values from a number of channels. A user defined
+function handler is used to process the data.
+	
+- `prescaler` and `vref` are the same constants as above.
+	
+- `pin_qty` is the number of pins/channels to read from: 1-8 or 1-16 if available.
+	
+- `handler` is the user defined function, and it should be defined as:
+	
+		void examle(uint8_t pin, uint16_t value) {
+			// code goes here
+		}
 
-	- This function stops the ADC and disables the interrupt.
+
+	`void adc_stop()`
+
+- This function stops the ADC and disables the interrupt.
 
 ## Sample Code
 

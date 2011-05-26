@@ -9,26 +9,25 @@ Three functions are currently provided:
 
 	uint16_t adc_read(uint8_t prescaler, uint8_t vref, uint8_t pin)
 	
-- This function reads the value on an specific channel only once.
-	
-- Where `prescaler` is a predefined constant to choose from:
+	- This function reads the value on an specific channel only once.
+		
+	- Where `prescaler` is a predefined constant to choose from:
 
-		ADC_PRESCALER_2
-		ADC_PRESCALER_4
-		ADC_PRESCALER_16
-		ADC_PRESCALER_32
-		ADC_PRESCALER_64
-		ADC_PRESCALER_128
+			ADC_PRESCALER_2
+			ADC_PRESCALER_4
+			ADC_PRESCALER_16
+			ADC_PRESCALER_32
+			ADC_PRESCALER_64
+			ADC_PRESCALER_128
 
-- `vref` is another constant needed to select voltage reference:
-	
-		ADC_VREF_AREF
-		ADC_VREF_AVCC
-		ADC_VREF_MISC1
-		ADC_VREF_MISC2
-	
-- And `pin` is the channel to read from: 0-7 or 0-16 if available.
-	
+	- `vref` is another constant needed to select voltage reference:
+		
+			ADC_VREF_AREF
+			ADC_VREF_AVCC
+			ADC_VREF_MISC1
+			ADC_VREF_MISC2
+		
+	- And `pin` is the channel to read from: 0-7 or 0-16 if available.
 	
 	
 	void adc_start(uint8_t prescaler, uint8_t vref, uint8_t pin_qty, void (*handler)(uint8_t, uint16_t))

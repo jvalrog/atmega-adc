@@ -7,10 +7,10 @@ supports up to 16 ADC channels.
 
 Three functions are currently provided:
 
-	uint16_t adc_read(uint8_t prescaler, uint8_t vref, uint8_t pin)
+- A function to read the value on an specific channel only once:
+
+		uint16_t adc_read(uint8_t prescaler, uint8_t vref, uint8_t pin)
 	
-	- This function reads the value on an specific channel only once.
-		
 	- Where `prescaler` is a predefined constant to choose from:
 
 			ADC_PRESCALER_2
@@ -29,26 +29,24 @@ Three functions are currently provided:
 		
 	- And `pin` is the channel to read from: 0-7 or 0-16 if available.
 	
-	
-	void adc_start(uint8_t prescaler, uint8_t vref, uint8_t pin_qty, void (*handler)(uint8_t, uint16_t))
-	
-- This function uses the ADC interrupt to read values from a number of channels. A user defined
-function handler is used to process the data.
-	
-- `prescaler` and `vref` are the same constants as above.
-	
-- `pin_qty` is the number of pins/channels to read from: 1-8 or 1-16 if available.
-	
-- `handler` is the user defined function, and it should be defined as:
-	
-		void examle(uint8_t pin, uint16_t value) {
-			// code goes here
-		}
+- A function to read continuosly a number of channels and execute a user-defined function
+on every read:
 
+		void adc_start(uint8_t prescaler, uint8_t vref, uint8_t pin_qty, void (*handler)(uint8_t, uint16_t))
+	
+	- `prescaler` and `vref` are the same constants as above.
+		
+	- `pin_qty` is the number of pins/channels to read from: 1-8 or 1-16 if available.
+		
+	- `handler` is the user defined function, and it should be defined as:
+		
+			void examle(uint8_t pin, uint16_t value) {
+				// code goes here
+			}
 
-	`void adc_stop()`
+- A function to stop the ADC
 
-- This function stops the ADC and disables the interrupt.
+		`void adc_stop()`
 
 ## Sample Code
 
